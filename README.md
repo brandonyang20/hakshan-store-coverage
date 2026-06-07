@@ -20,6 +20,8 @@ python3 -m http.server 8000
 ## What you get
 
 - A map framed over the whole of Malaysia (Peninsular + Borneo).
+- A **location search box** (top-left) to find any address or place in Malaysia
+  and jump to it — handy for checking a spot against the coverage circles.
 - A pin for every store, with a popup showing its name, address and coordinates.
 - A semi-transparent coverage circle around each store.
 - A **radius slider** (top-right) adjustable from **5 km to 20 km** (default

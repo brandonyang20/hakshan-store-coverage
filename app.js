@@ -37,6 +37,19 @@
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
+  // Location search box (top-left). Geocodes via OpenStreetMap / Nominatim,
+  // biased to Malaysia, and drops a marker on the chosen place.
+  if (L.Control && L.Control.Geocoder) {
+    L.Control.geocoder({
+      position: "topleft",
+      placeholder: "Search a location…",
+      defaultMarkGeocode: true,
+      geocoder: L.Control.Geocoder.nominatim({
+        geocodingQueryParams: { countrycodes: "my" },
+      }),
+    }).addTo(map);
+  }
+
   const markersLayer = L.layerGroup().addTo(map);
   const circlesLayer = L.layerGroup().addTo(map);
   const storeMarkers = [];
