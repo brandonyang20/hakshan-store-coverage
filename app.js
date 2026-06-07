@@ -1,7 +1,6 @@
 /* Hakshan store coverage map.
  * Renders every store as a marker with an adjustable coverage circle. Opens
- * framed on the Klang Valley (KL / Selangor) where most outlets are. Markers
- * are draggable so positions can be corrected. */
+ * framed on the Klang Valley (KL / Selangor) where most outlets are. */
 
 (function () {
   "use strict";
@@ -37,15 +36,18 @@
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  // Location search box (top-left). Geocodes via OpenStreetMap / Nominatim,
-  // biased to Malaysia, and drops a marker on the chosen place.
+  // Location search box (top-left). Photon geocoder gives type-ahead
+  // suggestions as you type, biased toward the Klang Valley.
   if (L.Control && L.Control.Geocoder) {
     L.Control.geocoder({
       position: "topleft",
+      collapsed: false,
       placeholder: "Search a location…",
       defaultMarkGeocode: true,
-      geocoder: L.Control.Geocoder.nominatim({
-        geocodingQueryParams: { countrycodes: "my" },
+      suggestMinLength: 3,
+      suggestTimeout: 250,
+      geocoder: L.Control.Geocoder.photon({
+        geocodingQueryParams: { lang: "en", lat: 3.1, lon: 101.6, limit: 8 },
       }),
     }).addTo(map);
   }
@@ -84,27 +86,11 @@
     }).addTo(circlesLayer);
 
     const marker = L.marker([store.lat, store.lng], {
-      draggable: true,
       title: store.name,
     }).addTo(markersLayer);
 
     marker.bindPopup(popupHtml(store));
     marker.bindTooltip(store.name, { direction: "top", offset: [0, -10] });
-
-    marker.on("drag", function (e) {
-      circle.setLatLng(e.latlng);
-    });
-
-    marker.on("dragend", function (e) {
-      const ll = e.target.getLatLng();
-      store.lat = ll.lat;
-      store.lng = ll.lng;
-      marker.setPopupContent(popupHtml(store));
-      marker.openPopup();
-      console.log(
-        store.name + " -> lat: " + ll.lat.toFixed(5) + ", lng: " + ll.lng.toFixed(5)
-      );
-    });
 
     storeMarkers.push({ store: store, marker: marker, circle: circle });
   }

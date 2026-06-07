@@ -19,10 +19,11 @@ python3 -m http.server 8000
 
 ## What you get
 
-- A map framed over the whole of Malaysia (Peninsular + Borneo).
-- A **location search box** (top-left) to find any address or place in Malaysia
-  and jump to it — handy for checking a spot against the coverage circles.
-- A pin for every store, with a popup showing its name, address and coordinates.
+- A **location search box** (top-left) with type-ahead suggestions to find any
+  address or place and jump to it — handy for checking a spot against the
+  coverage circles.
+- A fixed pin for every store, with a popup showing its name, address and
+  coordinates.
 - A semi-transparent coverage circle around each store.
 - A **radius slider** (top-right) adjustable from **5 km to 20 km** (default
   **10 km**) that resizes every circle live.
@@ -48,10 +49,17 @@ The default radius and slider range are set in the same file via
 
 ### Fixing a pin's position
 
-Every marker is **draggable**. Drag a pin to the exact spot — its popup and the
-browser console will show the updated `lat, lng`, which you can paste back into
-`stores.js` to make it permanent. You can also grab coordinates from Google Maps
-(right-click a location → click the lat/lng pair to copy).
+Pins are fixed in place. To move one, edit its `lat`/`lng` in `stores.js`. You
+can grab exact coordinates from Google Maps (right-click a location → click the
+lat/lng pair to copy).
+
+## About the coverage radius
+
+The circle is a true **geographic radius** — Leaflet draws it in real metres on
+the ground, so a 10 km circle really is 10 km from the store in every direction.
+Because the outlets sit near the equator the circles are essentially round (no
+meaningful projection distortion). Note this is **straight-line ("as the crow
+flies") distance**, not road driving distance or drive time.
 
 ## Stores currently included
 
