@@ -34,9 +34,12 @@
   const storeMarkers = [];
 
   function popupHtml(store) {
+    const brand = store.brand
+      ? ' <span class="popup-brand">' + escapeHtml(store.brand) + "</span>"
+      : "";
     return (
       '<div class="popup">' +
-      '<strong>' + escapeHtml(store.name) + "</strong>" +
+      '<strong>' + escapeHtml(store.name) + "</strong>" + brand +
       '<div class="popup-addr">' + escapeHtml(store.address || "") + "</div>" +
       '<div class="popup-coords">' +
       store.lat.toFixed(5) + ", " + store.lng.toFixed(5) +

@@ -48,15 +48,21 @@ browser console will show the updated `lat, lng`, which you can paste back into
 
 ## Stores currently included
 
-| Store | Address |
-| --- | --- |
-| Hakshan @ USJ Taipan | No. 31 & 33, Jalan USJ 10/1A, USJ Taipan, 47620 Subang Jaya, Selangor |
-| Hakshan @ Bandar Puteri Puchong | No. 39, 41 & 43, Jalan Puteri 2/1, Bandar Puteri, 47100 Puchong, Selangor |
-| Hakshan @ IOI Mall Puchong | Lot G-00A3A1, Ground Floor, IOI Mall, Bandar Puchong Jaya, 47100 Puchong, Selangor |
-| Hakshan @ Balakong (Cheras) | 11, Jalan Cheras, Balakong, 43000 Kajang, Selangor |
-| Hakshan @ Kepong | Kepong, Kuala Lumpur |
-| Hakshan @ Ipoh | No. 45, 47 & 49, Medan Soon Choon 1, Jalan Sultan Nazrin Shah, 31350 Ipoh, Perak |
+10 outlets, with coordinates taken from the outlet database:
 
-> Coordinates are best-effort, derived from the published street addresses.
-> Drag any marker to fine-tune, then copy the corrected coordinates into
-> `stores.js`.
+| Store | Brand | Lat, Lng |
+| --- | --- | --- |
+| HakShan Bandar Puteri Puchong | BPP | 3.027661, 101.616749 |
+| HakShan Menjalara Kepong | MJL | 3.194074, 101.631551 |
+| HakShan Kota Damansara | KD | 3.152532, 101.592409 |
+| HakShan SS2 | SS2 | 3.119604, 101.623077 |
+| HakShan Pudu Plaza | CLOUDPP | 3.137668, 101.713714 |
+| HakShan Sri Petaling | SRP | 3.068043, 101.694733 |
+| HakShan Cheras Trader Square | CTS | 3.034396, 101.763926 |
+| HakShan Ipoh | IPOHG | 4.6071292, 101.1186191 |
+| HakShan Bukit Tinggi | BKTTINGGI | 3.0101246, 101.4361055 |
+| HakShan USJ Taipan | USJ | 3.047238, 101.584992 |
+
+> The `Hakshan (DEMO)` / `HDEMO` database record is intentionally excluded — it
+> duplicates the Cheras Trader Square address with a bad latitude (2.034). Add it
+> to `stores.js` if you want it on the map.
