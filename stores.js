@@ -86,11 +86,16 @@ const STORES = [
   },
 ];
 
-// Coverage radius drawn around every store, in metres.
-const COVERAGE_RADIUS_M = 9000; // 9 km
+// Coverage radius drawn around every store, in metres. Adjustable in the UI
+// between RADIUS_MIN_M and RADIUS_MAX_M; this is the value shown on load.
+const COVERAGE_RADIUS_M = 10000; // 10 km
+const RADIUS_MIN_M = 5000; // 5 km
+const RADIUS_MAX_M = 20000; // 20 km
 
 // Make available whether loaded as a module or a plain <script>.
 if (typeof window !== "undefined") {
   window.STORES = STORES;
   window.COVERAGE_RADIUS_M = COVERAGE_RADIUS_M;
+  window.RADIUS_MIN_M = RADIUS_MIN_M;
+  window.RADIUS_MAX_M = RADIUS_MAX_M;
 }

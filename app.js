@@ -1,27 +1,35 @@
 /* Hakshan store coverage map.
- * Renders every store as a marker with a 9 km coverage circle, on a map
- * framed over Malaysia. Markers are draggable so positions can be corrected. */
+ * Renders every store as a marker with an adjustable coverage circle. Opens
+ * framed on the Klang Valley (KL / Selangor) where most outlets are. Markers
+ * are draggable so positions can be corrected. */
 
 (function () {
   "use strict";
 
   const stores = window.STORES || [];
-  const radius = window.COVERAGE_RADIUS_M || 9000;
+  let currentRadius = window.COVERAGE_RADIUS_M || 10000;
+  const radiusMin = window.RADIUS_MIN_M || 5000;
+  const radiusMax = window.RADIUS_MAX_M || 20000;
 
-  // Approximate bounding box of Malaysia (Peninsular + Borneo) so the initial
-  // view always covers the whole country.
+  // Approximate bounding box of Malaysia (Peninsular + Borneo).
   const MALAYSIA_BOUNDS = L.latLngBounds(
     L.latLng(0.85, 99.6), // south-west
     L.latLng(7.5, 119.3)  // north-east
   );
 
+  // Default view: the Klang Valley (Kuala Lumpur + Selangor).
+  const KLANG_VALLEY_BOUNDS = L.latLngBounds(
+    L.latLng(2.95, 101.35), // south-west
+    L.latLng(3.26, 101.82)  // north-east
+  );
+
   const map = L.map("map", {
-    center: [4.2, 109.0],
-    zoom: 6,
+    center: [3.1, 101.6],
+    zoom: 11,
     worldCopyJump: true,
   });
 
-  map.fitBounds(MALAYSIA_BOUNDS);
+  map.fitBounds(KLANG_VALLEY_BOUNDS);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -33,25 +41,29 @@
   const circlesLayer = L.layerGroup().addTo(map);
   const storeMarkers = [];
 
+  function km(metres) {
+    // Trim trailing ".0" so "10 km" reads cleanly but "7.5 km" still shows.
+    return (metres / 1000).toFixed(1).replace(/\.0$/, "");
+  }
+
   function popupHtml(store) {
     const brand = store.brand
       ? ' <span class="popup-brand">' + escapeHtml(store.brand) + "</span>"
       : "";
     return (
       '<div class="popup">' +
-      '<strong>' + escapeHtml(store.name) + "</strong>" + brand +
+      "<strong>" + escapeHtml(store.name) + "</strong>" + brand +
       '<div class="popup-addr">' + escapeHtml(store.address || "") + "</div>" +
       '<div class="popup-coords">' +
       store.lat.toFixed(5) + ", " + store.lng.toFixed(5) +
       "</div>" +
-      '<div class="popup-radius">Coverage: ' + (radius / 1000) + " km radius</div>" +
       "</div>"
     );
   }
 
   function addStore(store) {
     const circle = L.circle([store.lat, store.lng], {
-      radius: radius,
+      radius: currentRadius,
       color: "#c0392b",
       weight: 1.5,
       fillColor: "#e74c3c",
@@ -86,28 +98,57 @@
 
   stores.forEach(addStore);
 
+  function setRadius(metres) {
+    currentRadius = metres;
+    storeMarkers.forEach(function (s) {
+      s.circle.setRadius(metres);
+    });
+  }
+
   // --- Controls --------------------------------------------------------------
 
   let radiusVisible = true;
-  const RadiusToggle = L.Control.extend({
+  const Controls = L.Control.extend({
     options: { position: "topright" },
     onAdd: function () {
       const div = L.DomUtil.create("div", "leaflet-bar map-control");
       div.innerHTML =
-        '<button id="toggle-radius" type="button">Hide 9&nbsp;km radius</button>' +
-        '<button id="fit-stores" type="button">Zoom to stores</button>' +
+        '<div class="radius-slider">' +
+        '<label for="radius-range">Coverage radius: ' +
+        '<strong id="radius-value">' + km(currentRadius) + " km</strong></label>" +
+        '<input id="radius-range" type="range" min="' + radiusMin +
+        '" max="' + radiusMax + '" step="500" value="' + currentRadius + '">' +
+        '<div class="radius-ends"><span>' + km(radiusMin) + " km</span><span>" +
+        km(radiusMax) + " km</span></div>" +
+        "</div>" +
+        '<button id="toggle-radius" type="button">Hide radius</button>' +
+        '<button id="fit-klang" type="button">KL / Selangor</button>' +
+        '<button id="fit-stores" type="button">All stores</button>' +
         '<button id="fit-malaysia" type="button">Whole Malaysia</button>';
       L.DomEvent.disableClickPropagation(div);
+      L.DomEvent.disableScrollPropagation(div);
+
+      const range = div.querySelector("#radius-range");
+      const value = div.querySelector("#radius-value");
+      range.addEventListener("input", function () {
+        const metres = Number(range.value);
+        value.textContent = km(metres) + " km";
+        setRadius(metres);
+      });
 
       div.querySelector("#toggle-radius").addEventListener("click", function (e) {
         radiusVisible = !radiusVisible;
         if (radiusVisible) {
           circlesLayer.addTo(map);
-          e.target.innerHTML = "Hide 9&nbsp;km radius";
+          e.target.textContent = "Hide radius";
         } else {
           map.removeLayer(circlesLayer);
-          e.target.innerHTML = "Show 9&nbsp;km radius";
+          e.target.textContent = "Show radius";
         }
+      });
+
+      div.querySelector("#fit-klang").addEventListener("click", function () {
+        map.fitBounds(KLANG_VALLEY_BOUNDS);
       });
 
       div.querySelector("#fit-stores").addEventListener("click", function () {
@@ -124,7 +165,7 @@
       return div;
     },
   });
-  map.addControl(new RadiusToggle());
+  map.addControl(new Controls());
 
   // Store count badge.
   const Info = L.Control.extend({
@@ -133,7 +174,7 @@
       const div = L.DomUtil.create("div", "map-info");
       div.innerHTML =
         "<strong>Hakshan store coverage</strong><br>" +
-        stores.length + " stores &middot; 9 km radius each";
+        stores.length + " stores";
       return div;
     },
   });

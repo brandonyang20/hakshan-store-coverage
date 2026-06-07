@@ -1,7 +1,8 @@
 # Hakshan Store Coverage Map
 
-An interactive map covering all of Malaysia with every **Hakshan (客善)** outlet
-pinned, and a **9 km coverage radius** drawn around each store.
+An interactive map of every **Hakshan (客善)** outlet in Malaysia, each with an
+adjustable **coverage radius** drawn around it. The map opens framed on the
+Klang Valley (Kuala Lumpur / Selangor), where most outlets are.
 
 ## Open it
 
@@ -20,9 +21,11 @@ python3 -m http.server 8000
 
 - A map framed over the whole of Malaysia (Peninsular + Borneo).
 - A pin for every store, with a popup showing its name, address and coordinates.
-- A semi-transparent **9 km radius** circle around each store.
-- Controls (top-right) to toggle the radius, zoom to the stores, or zoom back
-  out to the whole country.
+- A semi-transparent coverage circle around each store.
+- A **radius slider** (top-right) adjustable from **5 km to 20 km** (default
+  **10 km**) that resizes every circle live.
+- Controls to hide the radius, or zoom to KL/Selangor, all stores, or the whole
+  country.
 
 ## Editing the store list
 
@@ -37,7 +40,9 @@ All store data lives in **`stores.js`** — edit that one file:
 }
 ```
 
-The 9 km radius is set once via `COVERAGE_RADIUS_M` (9000 metres) in the same file.
+The default radius and slider range are set in the same file via
+`COVERAGE_RADIUS_M` (10000 m), `RADIUS_MIN_M` (5000 m) and `RADIUS_MAX_M`
+(20000 m).
 
 ### Fixing a pin's position
 
