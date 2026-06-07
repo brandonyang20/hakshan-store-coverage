@@ -25,8 +25,8 @@ python3 -m http.server 8000
 - A fixed pin for every store, with a popup showing its name, address and
   coordinates.
 - A semi-transparent coverage circle around each store.
-- A **radius slider** (top-right) adjustable from **5 km to 20 km** (default
-  **10 km**) that resizes every circle live.
+- A **radius slider** (top-right) adjustable from **3 km to 20 km** (default
+  **5 km**) that resizes every circle live.
 - Controls to hide the radius, or zoom to KL/Selangor, all stores, or the whole
   country.
 
@@ -44,7 +44,7 @@ All store data lives in **`stores.js`** — edit that one file:
 ```
 
 The default radius and slider range are set in the same file via
-`COVERAGE_RADIUS_M` (10000 m), `RADIUS_MIN_M` (5000 m) and `RADIUS_MAX_M`
+`COVERAGE_RADIUS_M` (5000 m), `RADIUS_MIN_M` (3000 m) and `RADIUS_MAX_M`
 (20000 m).
 
 ### Fixing a pin's position
