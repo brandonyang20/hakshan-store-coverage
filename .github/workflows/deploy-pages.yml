@@ -2,7 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # The repo's default branch — GitHub Pages only allows the github-pages
+    # environment to deploy from the default branch.
+    branches: ["claude/dreamy-allen-1MRNp"]
   workflow_dispatch:
 
 permissions:
