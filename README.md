@@ -63,7 +63,7 @@ flies") distance**, not road driving distance or drive time.
 
 ## Stores currently included
 
-10 outlets, with coordinates taken from the outlet database:
+12 outlets, with coordinates taken from the outlet database:
 
 | Store | Brand | Lat, Lng |
 | --- | --- | --- |
@@ -77,6 +77,8 @@ flies") distance**, not road driving distance or drive time.
 | HakShan Ipoh | IPOHG | 4.6071292, 101.1186191 |
 | HakShan Bukit Tinggi | BKTTINGGI | 3.0101246, 101.4361055 |
 | HakShan USJ Taipan | USJ | 3.047238, 101.584992 |
+| HakShan Taman Segar | TSG | 3.089211, 101.742108 |
+| HakShan Taman Danau Desa | TDD | 3.098405, 101.686530 |
 
 > The `Hakshan (DEMO)` / `HDEMO` database record is intentionally excluded — it
 > duplicates the Cheras Trader Square address with a bad latitude (2.034). Add it

@@ -84,6 +84,20 @@ const STORES = [
     lat: 3.0472380,
     lng: 101.5849920,
   },
+  {
+    name: "HakShan Taman Segar",
+    brand: "TSG",
+    address: "Taman Segar, Cheras, 56100 Kuala Lumpur",
+    lat: 3.089211410140525,
+    lng: 101.74210759582489,
+  },
+  {
+    name: "HakShan Taman Danau Desa",
+    brand: "TDD",
+    address: "Taman Danau Desa, 58100 Kuala Lumpur",
+    lat: 3.0984048231907404,
+    lng: 101.68652985349777,
+  },
 ];
 
 // Coverage radius drawn around every store, in metres. Adjustable in the UI
