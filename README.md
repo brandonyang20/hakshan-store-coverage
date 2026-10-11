@@ -63,23 +63,28 @@ flies") distance**, not road driving distance or drive time.
 
 ## Stores currently included
 
-12 outlets, with coordinates taken from the outlet database:
+18 outlets: every active row in the Hakshan Web App's Supabase `outlets` table.
+Brand codes starting with `CLOUD` are cloud kitchens.
 
 | Store | Brand | Lat, Lng |
 | --- | --- | --- |
-| HakShan Bandar Puteri Puchong | BPP | 3.027661, 101.616749 |
-| HakShan Menjalara Kepong | MJL | 3.194074, 101.631551 |
-| HakShan Kota Damansara | KD | 3.152532, 101.592409 |
-| HakShan SS2 | SS2 | 3.119604, 101.623077 |
-| HakShan Pudu Plaza | CLOUDPP | 3.137668, 101.713714 |
-| HakShan Sri Petaling | SRP | 3.068043, 101.694733 |
-| HakShan Cheras Trader Square | CTS | 3.034396, 101.763926 |
-| HakShan Ipoh | IPOHG | 4.6071292, 101.1186191 |
+| HakShan Bandar Puteri Puchong | BPP | 3.0276610, 101.6167490 |
 | HakShan Bukit Tinggi | BKTTINGGI | 3.0101246, 101.4361055 |
-| HakShan USJ Taipan | USJ | 3.047238, 101.584992 |
-| HakShan Taman Segar | TSG | 3.089211, 101.742108 |
-| HakShan Taman Danau Desa | TDD | 3.098405, 101.686530 |
+| HakShan Cheras Trader Square | CTS | 3.0343960, 101.7639260 |
+| HakShan Ipoh | IPOHG | 4.6071292, 101.1186191 |
+| HakShan Kepong Rimbunan | HKR | 3.2109599, 101.6500727 |
+| HakShan Kota Damansara | KD | 3.1525320, 101.5924090 |
+| HakShan Kota Kemuning | HSKK | 3.0041073, 101.5348148 |
+| HakShan Menjalara Kepong | MJL | 3.1940740, 101.6315510 |
+| HakShan Plaza Damansara | CLOUDPD | 3.1502964, 101.6535105 |
+| HakShan Pudu Plaza | CLOUDPP | 3.1376680, 101.7137140 |
+| HakShan Setapak | STP | 3.2031056, 101.7169180 |
+| HakShan Solaris Mont Kiara | SMK | 3.1761424, 101.6594647 |
+| HakShan Sri Petaling | SRP | 3.0680430, 101.6947330 |
+| HakShan SS2 | SS2 | 3.1196040, 101.6230770 |
+| HakShan Sunway Mentari | CLOUDSM | 3.0758230, 101.6114612 |
+| HakShan Taman Danau Desa | TDD | 3.0983995, 101.6865513 |
+| HakShan Taman Segar Cheras | TSC | 3.0893488, 101.7418426 |
+| HakShan USJ Taipan | USJ | 3.0472380, 101.5849920 |
 
-> The `Hakshan (DEMO)` / `HDEMO` database record is intentionally excluded — it
-> duplicates the Cheras Trader Square address with a bad latitude (2.034). Add it
-> to `stores.js` if you want it on the map.
+> The inactive `Hakshan (DEMO)` / `HDEMO` test row is left out.

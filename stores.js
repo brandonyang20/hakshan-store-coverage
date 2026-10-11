@@ -1,16 +1,15 @@
 // Hakshan (客善) store locations across Malaysia.
 // ---------------------------------------------------------------------------
+// SOURCE: the `public.outlets` table of the Hakshan Web App (Supabase), rows
+// with is_active = true. Names, brand codes, addresses and coordinates are
+// copied as-is. The inactive "Hakshan (DEMO)" / HDEMO test row is left out.
+// Brand codes starting with CLOUD are cloud kitchens.
+//
 // HOW TO EDIT:
 //   - Add / remove entries in the `STORES` array below.
 //   - Each store needs: name, brand, address, lat, lng.
 //   - `lat`/`lng` are decimal degrees (WGS84). You can read exact values off
-//     Google Maps (right-click a spot -> the first two numbers) or by dragging
-//     a marker on this map (drag is enabled; the popup shows live coordinates).
-//
-// Coordinates below are the authoritative values supplied from the outlet
-// database. The "Hakshan (DEMO)" / HDEMO record is intentionally omitted: it is
-// a test entry duplicating the Cheras Trader Square address with a bad latitude
-// (2.034 instead of 3.034). Add it back below if you actually want it shown.
+//     Google Maps (right-click a spot -> the first two numbers).
 // ---------------------------------------------------------------------------
 
 const STORES = [
@@ -22,11 +21,32 @@ const STORES = [
     lng: 101.6167490,
   },
   {
-    name: "HakShan Menjalara Kepong",
-    brand: "MJL",
-    address: "Ground Floor, 25, Jln 5/62a, Bandar Menjalara, 52200 Kuala Lumpur",
-    lat: 3.1940740,
-    lng: 101.6315510,
+    name: "HakShan Bukit Tinggi",
+    brand: "BKTTINGGI",
+    address: "21-G, Jalan Batu Nilam 3F/KS06, Bandar Bukit Tinggi 1, 41200 Klang, Selangor",
+    lat: 3.0101246,
+    lng: 101.4361055,
+  },
+  {
+    name: "HakShan Cheras Trader Square",
+    brand: "CTS",
+    address: "153A-G, Jln Dataran Cheras 9, Cheras Trader Square, 43200 Selangor",
+    lat: 3.0343960,
+    lng: 101.7639260,
+  },
+  {
+    name: "HakShan Ipoh",
+    brand: "IPOHG",
+    address: "15 & 16 G/F, Ipoh Garden, Jalan Sultan Azlan Shah, Taman Ipoh, 31400 Ipoh, Perak",
+    lat: 4.6071292,
+    lng: 101.1186191,
+  },
+  {
+    name: "HakShan Kepong Rimbunan",
+    brand: "HKR",
+    address: "57-1, Ground Floor, Jalan Rimbunan Raya 1, Laman Rimbunan, Kepong, 52100 Kuala Lumpur",
+    lat: 3.2109599,
+    lng: 101.6500727,
   },
   {
     name: "HakShan Kota Damansara",
@@ -36,18 +56,46 @@ const STORES = [
     lng: 101.5924090,
   },
   {
-    name: "HakShan SS2",
-    brand: "SS2",
-    address: "11A, Ground Floor, Jalan SS2/75, SS 2, 47300 Petaling Jaya, Selangor",
-    lat: 3.1196040,
-    lng: 101.6230770,
+    name: "HakShan Kota Kemuning",
+    brand: "HSKK",
+    address: "21, Jln Anggerik Vanilla BF 31/BF, Kota Kemuning, 40460 Shah Alam, Selangor",
+    lat: 3.0041073,
+    lng: 101.5348148,
+  },
+  {
+    name: "HakShan Menjalara Kepong",
+    brand: "MJL",
+    address: "Ground Floor, 25, Jln 5/62a, Bandar Menjalara, 52200 Kuala Lumpur",
+    lat: 3.1940740,
+    lng: 101.6315510,
+  },
+  {
+    name: "HakShan Plaza Damansara",
+    brand: "CLOUDPD",
+    address: "No. 61-1, Jalan Medan Setia 1, Plaza Damansara, Damansara Heights, 50490 Kuala Lumpur",
+    lat: 3.1502964,
+    lng: 101.6535105,
   },
   {
     name: "HakShan Pudu Plaza",
     brand: "CLOUDPP",
-    address: "L-E6 & L-E7, LG Floor, Pudu Plaza Shopping Centre, Jalan Landak, 55100 Kuala Lumpur",
+    address: "L-E6 & L-E7, LG Floor, Pudu Plaza Shopping Centre, 51, Jln Landak Off Jln Pudu, 55100 Kuala Lumpur",
     lat: 3.1376680,
     lng: 101.7137140,
+  },
+  {
+    name: "HakShan Setapak",
+    brand: "STP",
+    address: "G12A & G16, Jalan Danau Niaga 1, Taman Danau Kota, 53300 Kuala Lumpur",
+    lat: 3.2031056,
+    lng: 101.7169180,
+  },
+  {
+    name: "HakShan Solaris Mont Kiara",
+    brand: "SMK",
+    address: "16, Jalan Solaris 5, Solaris Mont Kiara, 50480 Kuala Lumpur",
+    lat: 3.1761424,
+    lng: 101.6594647,
   },
   {
     name: "HakShan Sri Petaling",
@@ -57,25 +105,32 @@ const STORES = [
     lng: 101.6947330,
   },
   {
-    name: "HakShan Cheras Trader Square",
-    brand: "CTS",
-    address: "153A-G, Jln Dataran Cheras 9, Cheras Trader Square, 43200 Cheras, Selangor",
-    lat: 3.0343960,
-    lng: 101.7639260,
+    name: "HakShan SS2",
+    brand: "SS2",
+    address: "11A, Ground Floor, Jalan SS2/75, SS 2, 47300 Petaling Jaya, Selangor",
+    lat: 3.1196040,
+    lng: 101.6230770,
   },
   {
-    name: "HakShan Ipoh",
-    brand: "IPOHG",
-    address: "15 & 16 G/F, Ipoh Garden, Jalan Sultan Azlan Shah, 31400 Ipoh, Perak",
-    lat: 4.6071292,
-    lng: 101.1186191,
+    name: "HakShan Sunway Mentari",
+    brand: "CLOUDSM",
+    address: "2A-3, Jalan PJS 8/4, Sunway Mentari, 46150 Petaling Jaya, Selangor",
+    lat: 3.0758230,
+    lng: 101.6114612,
   },
   {
-    name: "HakShan Bukit Tinggi",
-    brand: "BKTTINGGI",
-    address: "21-G, Jalan Batu Nilam 3F/KS06, Bandar Bukit Tinggi, 41200 Klang, Selangor",
-    lat: 3.0101246,
-    lng: 101.4361055,
+    name: "HakShan Taman Danau Desa",
+    brand: "TDD",
+    address: "31, Jalan 1/109f, Taman Danau Desa, 58100 Kuala Lumpur",
+    lat: 3.0983995,
+    lng: 101.6865513,
+  },
+  {
+    name: "HakShan Taman Segar Cheras",
+    brand: "TSC",
+    address: "No 29-GF, Jalan Manis 6, Taman Segar, 56100 Kuala Lumpur",
+    lat: 3.0893488,
+    lng: 101.7418426,
   },
   {
     name: "HakShan USJ Taipan",
@@ -83,20 +138,6 @@ const STORES = [
     address: "33, Jalan USJ 10/1g, Taipan Business Centre, 47620 Subang Jaya, Selangor",
     lat: 3.0472380,
     lng: 101.5849920,
-  },
-  {
-    name: "HakShan Taman Segar",
-    brand: "TSG",
-    address: "Taman Segar, Cheras, 56100 Kuala Lumpur",
-    lat: 3.089211410140525,
-    lng: 101.74210759582489,
-  },
-  {
-    name: "HakShan Taman Danau Desa",
-    brand: "TDD",
-    address: "Taman Danau Desa, 58100 Kuala Lumpur",
-    lat: 3.0984048231907404,
-    lng: 101.68652985349777,
   },
 ];
 
