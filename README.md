@@ -63,7 +63,7 @@ flies") distance**, not road driving distance or drive time.
 
 ## Stores currently included
 
-18 outlets: every active row in the Hakshan Web App's Supabase `outlets` table.
+19 outlets: every active row in the Hakshan Web App's Supabase `outlets` table.
 Brand codes starting with `CLOUD` are cloud kitchens.
 
 | Store | Brand | Lat, Lng |
@@ -79,6 +79,7 @@ Brand codes starting with `CLOUD` are cloud kitchens.
 | HakShan Plaza Damansara | CLOUDPD | 3.1502964, 101.6535105 |
 | HakShan Pudu Plaza | CLOUDPP | 3.1376680, 101.7137140 |
 | HakShan Setapak | STP | 3.2031056, 101.7169180 |
+| HakShan Setia Alam | STALAM | 3.1001233, 101.4444431 |
 | HakShan Solaris Mont Kiara | SMK | 3.1761424, 101.6594647 |
 | HakShan Sri Petaling | SRP | 3.0680430, 101.6947330 |
 | HakShan SS2 | SS2 | 3.1196040, 101.6230770 |

@@ -91,6 +91,13 @@ const STORES = [
     lng: 101.7169180,
   },
   {
+    name: "HakShan Setia Alam",
+    brand: "STALAM",
+    address: "No 6-1, 1, Jalan Setia Prima Q U13/Q, Setia Alam, 40170 Shah Alam, Selangor",
+    lat: 3.1001233,
+    lng: 101.4444431,
+  },
+  {
     name: "HakShan Solaris Mont Kiara",
     brand: "SMK",
     address: "16, Jalan Solaris 5, Solaris Mont Kiara, 50480 Kuala Lumpur",
