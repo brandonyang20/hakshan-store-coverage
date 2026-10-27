@@ -6,7 +6,7 @@
 // Brand codes starting with CLOUD are cloud kitchens.
 // Exceptions: HakShan Pandan Indah and HakShan Seri Kembangan are not in the
 // database yet; their names, codes and coordinates were supplied by hand.
-// `upcoming: true` marks a store that hasn't opened (dashed amber circle).
+// `upcoming: true` marks a store that hasn't opened (amber circle).
 //
 // HOW TO EDIT:
 //   - Add / remove entries in the `STORES` array below.

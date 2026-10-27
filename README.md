@@ -67,7 +67,7 @@ flies") distance**, not road driving distance or drive time.
 Supabase `outlets` table, plus HakShan Pandan Indah and the upcoming HakShan
 Seri Kembangan, which aren't in the database yet and were added by hand. Brand
 codes starting with `CLOUD` are cloud kitchens. Upcoming stores (`upcoming: true`
-in `stores.js`) get a dashed amber circle and an "Upcoming" badge.
+in `stores.js`) get an amber circle and an "Upcoming" badge.
 
 | Store | Brand | Lat, Lng |
 | --- | --- | --- |

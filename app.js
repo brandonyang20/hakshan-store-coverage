@@ -80,12 +80,11 @@
   }
 
   function addStore(store) {
-    // Upcoming (not yet open) stores get a dashed amber circle.
+    // Upcoming (not yet open) stores get an amber circle.
     const circle = L.circle([store.lat, store.lng], {
       radius: currentRadius,
       color: store.upcoming ? "#b9770e" : "#c0392b",
       weight: 1.5,
-      dashArray: store.upcoming ? "6 6" : null,
       fillColor: store.upcoming ? "#f5b041" : "#e74c3c",
       fillOpacity: store.upcoming ? 0.12 : 0.18,
     }).addTo(circlesLayer);
