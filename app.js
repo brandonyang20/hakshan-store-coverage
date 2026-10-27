@@ -65,9 +65,12 @@
     const brand = store.brand
       ? ' <span class="popup-brand">' + escapeHtml(store.brand) + "</span>"
       : "";
+    const upcoming = store.upcoming
+      ? ' <span class="popup-upcoming">Upcoming</span>'
+      : "";
     return (
       '<div class="popup">' +
-      "<strong>" + escapeHtml(store.name) + "</strong>" + brand +
+      "<strong>" + escapeHtml(store.name) + "</strong>" + brand + upcoming +
       '<div class="popup-addr">' + escapeHtml(store.address || "") + "</div>" +
       '<div class="popup-coords">' +
       store.lat.toFixed(5) + ", " + store.lng.toFixed(5) +
@@ -77,20 +80,26 @@
   }
 
   function addStore(store) {
+    // Upcoming (not yet open) stores get a dashed amber circle.
     const circle = L.circle([store.lat, store.lng], {
       radius: currentRadius,
-      color: "#c0392b",
+      color: store.upcoming ? "#b9770e" : "#c0392b",
       weight: 1.5,
-      fillColor: "#e74c3c",
-      fillOpacity: 0.18,
+      dashArray: store.upcoming ? "6 6" : null,
+      fillColor: store.upcoming ? "#f5b041" : "#e74c3c",
+      fillOpacity: store.upcoming ? 0.12 : 0.18,
     }).addTo(circlesLayer);
 
     const marker = L.marker([store.lat, store.lng], {
       title: store.name,
+      opacity: store.upcoming ? 0.75 : 1,
     }).addTo(markersLayer);
 
     marker.bindPopup(popupHtml(store));
-    marker.bindTooltip(store.name, { direction: "top", offset: [0, -10] });
+    marker.bindTooltip(store.name + (store.upcoming ? " (upcoming)" : ""), {
+      direction: "top",
+      offset: [0, -10],
+    });
 
     storeMarkers.push({ store: store, marker: marker, circle: circle });
   }
@@ -171,9 +180,11 @@
     options: { position: "bottomleft" },
     onAdd: function () {
       const div = L.DomUtil.create("div", "map-info");
+      const upcoming = stores.filter((s) => s.upcoming).length;
       div.innerHTML =
         "<strong>Hakshan store coverage</strong><br>" +
-        stores.length + " stores";
+        (stores.length - upcoming) + " stores" +
+        (upcoming ? " &middot; " + upcoming + " upcoming" : "");
       return div;
     },
   });

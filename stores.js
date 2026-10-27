@@ -4,8 +4,9 @@
 // with is_active = true. Names, brand codes, addresses and coordinates are
 // copied as-is. The inactive "Hakshan (DEMO)" / HDEMO test row is left out.
 // Brand codes starting with CLOUD are cloud kitchens.
-// Exception: HakShan Pandan Indah is not in the database yet; its name, code
-// and coordinates were supplied by hand.
+// Exceptions: HakShan Pandan Indah and HakShan Seri Kembangan are not in the
+// database yet; their names, codes and coordinates were supplied by hand.
+// `upcoming: true` marks a store that hasn't opened (dashed amber circle).
 //
 // HOW TO EDIT:
 //   - Add / remove entries in the `STORES` array below.
@@ -91,6 +92,14 @@ const STORES = [
     address: "L-E6 & L-E7, LG Floor, Pudu Plaza Shopping Centre, 51, Jln Landak Off Jln Pudu, 55100 Kuala Lumpur",
     lat: 3.1376680,
     lng: 101.7137140,
+  },
+  {
+    name: "HakShan Seri Kembangan",
+    brand: "SKB",
+    address: "Seri Kembangan, Selangor (opening soon)",
+    lat: 3.0136912989932005,
+    lng: 101.69807104232724,
+    upcoming: true,
   },
   {
     name: "HakShan Setapak",

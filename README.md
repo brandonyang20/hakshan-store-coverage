@@ -63,9 +63,11 @@ flies") distance**, not road driving distance or drive time.
 
 ## Stores currently included
 
-20 outlets: every active row in the Hakshan Web App's Supabase `outlets` table,
-plus HakShan Pandan Indah, which isn't in the database yet and was added by
-hand. Brand codes starting with `CLOUD` are cloud kitchens.
+20 open outlets and 1 upcoming one: every active row in the Hakshan Web App's
+Supabase `outlets` table, plus HakShan Pandan Indah and the upcoming HakShan
+Seri Kembangan, which aren't in the database yet and were added by hand. Brand
+codes starting with `CLOUD` are cloud kitchens. Upcoming stores (`upcoming: true`
+in `stores.js`) get a dashed amber circle and an "Upcoming" badge.
 
 | Store | Brand | Lat, Lng |
 | --- | --- | --- |
@@ -80,6 +82,7 @@ hand. Brand codes starting with `CLOUD` are cloud kitchens.
 | HakShan Pandan Indah | PDI | 3.1332921, 101.7522078 |
 | HakShan Plaza Damansara | CLOUDPD | 3.1502964, 101.6535105 |
 | HakShan Pudu Plaza | CLOUDPP | 3.1376680, 101.7137140 |
+| HakShan Seri Kembangan (upcoming) | SKB | 3.0136913, 101.6980710 |
 | HakShan Setapak | STP | 3.2031056, 101.7169180 |
 | HakShan Setia Alam | STALAM | 3.1001233, 101.4444431 |
 | HakShan Solaris Mont Kiara | SMK | 3.1761424, 101.6594647 |
