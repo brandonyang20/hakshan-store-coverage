@@ -4,6 +4,8 @@
 // with is_active = true. Names, brand codes, addresses and coordinates are
 // copied as-is. The inactive "Hakshan (DEMO)" / HDEMO test row is left out.
 // Brand codes starting with CLOUD are cloud kitchens.
+// Exception: HakShan Pandan Indah is not in the database yet; its name, code
+// and coordinates were supplied by hand.
 //
 // HOW TO EDIT:
 //   - Add / remove entries in the `STORES` array below.
@@ -68,6 +70,13 @@ const STORES = [
     address: "Ground Floor, 25, Jln 5/62a, Bandar Menjalara, 52200 Kuala Lumpur",
     lat: 3.1940740,
     lng: 101.6315510,
+  },
+  {
+    name: "HakShan Pandan Indah",
+    brand: "PDI",
+    address: "8G, Jalan Pandan Indah 1/23A, Pandan Indah, 55100 Kuala Lumpur",
+    lat: 3.1332920926763617,
+    lng: 101.75220784235978,
   },
   {
     name: "HakShan Plaza Damansara",

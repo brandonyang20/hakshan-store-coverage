@@ -63,8 +63,9 @@ flies") distance**, not road driving distance or drive time.
 
 ## Stores currently included
 
-19 outlets: every active row in the Hakshan Web App's Supabase `outlets` table.
-Brand codes starting with `CLOUD` are cloud kitchens.
+20 outlets: every active row in the Hakshan Web App's Supabase `outlets` table,
+plus HakShan Pandan Indah, which isn't in the database yet and was added by
+hand. Brand codes starting with `CLOUD` are cloud kitchens.
 
 | Store | Brand | Lat, Lng |
 | --- | --- | --- |
@@ -76,6 +77,7 @@ Brand codes starting with `CLOUD` are cloud kitchens.
 | HakShan Kota Damansara | KD | 3.1525320, 101.5924090 |
 | HakShan Kota Kemuning | HSKK | 3.0041073, 101.5348148 |
 | HakShan Menjalara Kepong | MJL | 3.1940740, 101.6315510 |
+| HakShan Pandan Indah | PDI | 3.1332921, 101.7522078 |
 | HakShan Plaza Damansara | CLOUDPD | 3.1502964, 101.6535105 |
 | HakShan Pudu Plaza | CLOUDPP | 3.1376680, 101.7137140 |
 | HakShan Setapak | STP | 3.2031056, 101.7169180 |
