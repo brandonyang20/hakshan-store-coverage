@@ -2,9 +2,8 @@
 // ---------------------------------------------------------------------------
 // SOURCE: the `public.outlets` table of the Hakshan Web App (Supabase), rows
 // with is_active = true. Names, brand codes, addresses and coordinates are
-// copied as-is. The inactive "Hakshan (DEMO)" / HDEMO test row is left out,
-// and so are the cloud kitchens (brand codes starting with CLOUD), because
-// they don't offer dine-in.
+// copied as-is. The inactive "Hakshan (DEMO)" / HDEMO test row is left out.
+// Brand codes starting with CLOUD are cloud kitchens (delivery only, blue circle).
 // Exceptions: HakShan Pandan Indah and HakShan Seri Kembangan are not in the
 // database yet; their names, codes and coordinates were supplied by hand.
 // `upcoming: true` marks a store that hasn't opened (amber circle).
@@ -81,6 +80,20 @@ const STORES = [
     lng: 101.75220784235978,
   },
   {
+    name: "HakShan Plaza Damansara",
+    brand: "CLOUDPD",
+    address: "No. 61-1, Jalan Medan Setia 1, Plaza Damansara, Damansara Heights, 50490 Kuala Lumpur",
+    lat: 3.1502964,
+    lng: 101.6535105,
+  },
+  {
+    name: "HakShan Pudu Plaza",
+    brand: "CLOUDPP",
+    address: "L-E6 & L-E7, LG Floor, Pudu Plaza Shopping Centre, 51, Jln Landak Off Jln Pudu, 55100 Kuala Lumpur",
+    lat: 3.1376680,
+    lng: 101.7137140,
+  },
+  {
     name: "HakShan Seri Kembangan",
     brand: "SKB",
     address: "Seri Kembangan, Selangor (opening soon)",
@@ -122,6 +135,13 @@ const STORES = [
     address: "11A, Ground Floor, Jalan SS2/75, SS 2, 47300 Petaling Jaya, Selangor",
     lat: 3.1196040,
     lng: 101.6230770,
+  },
+  {
+    name: "HakShan Sunway Mentari",
+    brand: "CLOUDSM",
+    address: "2A-3, Jalan PJS 8/4, Sunway Mentari, 46150 Petaling Jaya, Selangor",
+    lat: 3.0758230,
+    lng: 101.6114612,
   },
   {
     name: "HakShan Taman Danau Desa",

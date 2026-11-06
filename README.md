@@ -63,12 +63,14 @@ flies") distance**, not road driving distance or drive time.
 
 ## Stores currently included
 
-17 dine-in outlets and 1 upcoming one: every active dine-in row in the Hakshan
-Web App's Supabase `outlets` table, plus HakShan Pandan Indah and the upcoming
-HakShan Seri Kembangan, which aren't in the database yet and were added by hand.
-Cloud kitchens (brand codes starting with `CLOUD`) are left off because they
-don't offer dine-in. Upcoming stores (`upcoming: true`
-in `stores.js`) get an amber circle and an "Upcoming" badge.
+17 dine-in outlets, 3 cloud kitchens and 1 upcoming store: every active row in
+the Hakshan Web App's Supabase `outlets` table, plus HakShan Pandan Indah and
+the upcoming HakShan Seri Kembangan, which aren't in the database yet and were
+added by hand.
+
+Circle colours: **red** for dine-in outlets, **blue** for cloud kitchens (brand
+codes starting with `CLOUD`, delivery only) and **amber** for upcoming stores
+(`upcoming: true` in `stores.js`).
 
 | Store | Brand | Lat, Lng |
 | --- | --- | --- |
@@ -81,12 +83,15 @@ in `stores.js`) get an amber circle and an "Upcoming" badge.
 | HakShan Kota Kemuning | HSKK | 3.0041073, 101.5348148 |
 | HakShan Menjalara Kepong | MJL | 3.1940740, 101.6315510 |
 | HakShan Pandan Indah | PDI | 3.1332921, 101.7522078 |
+| HakShan Plaza Damansara | CLOUDPD | 3.1502964, 101.6535105 |
+| HakShan Pudu Plaza | CLOUDPP | 3.1376680, 101.7137140 |
 | HakShan Seri Kembangan (upcoming) | SKB | 3.0136913, 101.6980710 |
 | HakShan Setapak | STP | 3.2031056, 101.7169180 |
 | HakShan Setia Alam | STALAM | 3.1001233, 101.4444431 |
 | HakShan Solaris Mont Kiara | SMK | 3.1761424, 101.6594647 |
 | HakShan Sri Petaling | SRP | 3.0680430, 101.6947330 |
 | HakShan SS2 | SS2 | 3.1196040, 101.6230770 |
+| HakShan Sunway Mentari | CLOUDSM | 3.0758230, 101.6114612 |
 | HakShan Taman Danau Desa | TDD | 3.0983995, 101.6865513 |
 | HakShan Taman Segar Cheras | TSC | 3.0893488, 101.7418426 |
 | HakShan USJ Taipan | USJ | 3.0472380, 101.5849920 |

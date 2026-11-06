@@ -61,16 +61,32 @@
     return (metres / 1000).toFixed(1).replace(/\.0$/, "");
   }
 
+  // Circle colours per kind of store. Cloud kitchens (brand codes starting
+  // with CLOUD) are delivery-only; upcoming stores haven't opened yet.
+  const KINDS = {
+    dineIn: { label: "Dine-in", stroke: "#c0392b", fill: "#e74c3c", fillOpacity: 0.18 },
+    cloud: { label: "Cloud kitchen", stroke: "#1f618d", fill: "#3498db", fillOpacity: 0.18 },
+    upcoming: { label: "Upcoming", stroke: "#b9770e", fill: "#f5b041", fillOpacity: 0.12 },
+  };
+
+  function kindOf(store) {
+    if (store.upcoming) return "upcoming";
+    if (/^CLOUD/.test(store.brand || "")) return "cloud";
+    return "dineIn";
+  }
+
   function popupHtml(store) {
     const brand = store.brand
       ? ' <span class="popup-brand">' + escapeHtml(store.brand) + "</span>"
       : "";
-    const upcoming = store.upcoming
-      ? ' <span class="popup-upcoming">Upcoming</span>'
-      : "";
+    const kind = kindOf(store);
+    const tag = kind === "dineIn"
+      ? ""
+      : ' <span class="popup-tag" style="background:' + KINDS[kind].stroke + '">' +
+        KINDS[kind].label + "</span>";
     return (
       '<div class="popup">' +
-      "<strong>" + escapeHtml(store.name) + "</strong>" + brand + upcoming +
+      "<strong>" + escapeHtml(store.name) + "</strong>" + brand + tag +
       '<div class="popup-addr">' + escapeHtml(store.address || "") + "</div>" +
       '<div class="popup-coords">' +
       store.lat.toFixed(5) + ", " + store.lng.toFixed(5) +
@@ -80,22 +96,23 @@
   }
 
   function addStore(store) {
-    // Upcoming (not yet open) stores get an amber circle.
+    const kind = kindOf(store);
     const circle = L.circle([store.lat, store.lng], {
       radius: currentRadius,
-      color: store.upcoming ? "#b9770e" : "#c0392b",
+      color: KINDS[kind].stroke,
       weight: 1.5,
-      fillColor: store.upcoming ? "#f5b041" : "#e74c3c",
-      fillOpacity: store.upcoming ? 0.12 : 0.18,
+      fillColor: KINDS[kind].fill,
+      fillOpacity: KINDS[kind].fillOpacity,
     }).addTo(circlesLayer);
 
     const marker = L.marker([store.lat, store.lng], {
       title: store.name,
-      opacity: store.upcoming ? 0.75 : 1,
+      opacity: kind === "upcoming" ? 0.75 : 1,
     }).addTo(markersLayer);
 
     marker.bindPopup(popupHtml(store));
-    marker.bindTooltip(store.name + (store.upcoming ? " (upcoming)" : ""), {
+    const suffix = kind === "dineIn" ? "" : " (" + KINDS[kind].label.toLowerCase() + ")";
+    marker.bindTooltip(store.name + suffix, {
       direction: "top",
       offset: [0, -10],
     });
@@ -179,11 +196,18 @@
     options: { position: "bottomleft" },
     onAdd: function () {
       const div = L.DomUtil.create("div", "map-info");
-      const upcoming = stores.filter((s) => s.upcoming).length;
-      div.innerHTML =
-        "<strong>Hakshan store coverage</strong><br>" +
-        (stores.length - upcoming) + " stores" +
-        (upcoming ? " &middot; " + upcoming + " upcoming" : "");
+      const rows = Object.keys(KINDS)
+        .map(function (k) {
+          const n = stores.filter((s) => kindOf(s) === k).length;
+          if (!n) return "";
+          return (
+            '<div class="legend-row"><span class="legend-swatch" style="background:' +
+            KINDS[k].fill + ";border-color:" + KINDS[k].stroke + '"></span>' +
+            KINDS[k].label + " (" + n + ")</div>"
+          );
+        })
+        .join("");
+      div.innerHTML = "<strong>Hakshan store coverage</strong>" + rows;
       return div;
     },
   });
